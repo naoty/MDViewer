@@ -16,9 +16,13 @@
 		3D6E4A20166CE5CC00BCAB90 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D6E4A1F166CE5CC00BCAB90 /* Default.png */; };
 		3D6E4A22166CE5CC00BCAB90 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D6E4A21166CE5CC00BCAB90 /* Default@2x.png */; };
 		3D6E4A24166CE5CC00BCAB90 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D6E4A23166CE5CC00BCAB90 /* Default-568h@2x.png */; };
+		3DAD676F166CE743002BE205 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DAD676E166CE743002BE205 /* iPad.storyboard */; };
+		D4849548ED334356A0A223A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B686F12BF9C41C3ADF2DF58 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0188B77F0B04425D8BA8E22E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		0B686F12BF9C41C3ADF2DF58 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6E4A09166CE5CC00BCAB90 /* MDViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6E4A0D166CE5CC00BCAB90 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3D6E4A0F166CE5CC00BCAB90 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -32,6 +36,7 @@
 		3D6E4A1F166CE5CC00BCAB90 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3D6E4A21166CE5CC00BCAB90 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3D6E4A23166CE5CC00BCAB90 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3DAD676E166CE743002BE205 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +47,7 @@
 				3D6E4A0E166CE5CC00BCAB90 /* UIKit.framework in Frameworks */,
 				3D6E4A10166CE5CC00BCAB90 /* Foundation.framework in Frameworks */,
 				3D6E4A12166CE5CC00BCAB90 /* CoreGraphics.framework in Frameworks */,
+				D4849548ED334356A0A223A8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +60,7 @@
 				3D6E4A13166CE5CC00BCAB90 /* MDViewer */,
 				3D6E4A0C166CE5CC00BCAB90 /* Frameworks */,
 				3D6E4A0A166CE5CC00BCAB90 /* Products */,
+				0188B77F0B04425D8BA8E22E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +78,7 @@
 				3D6E4A0D166CE5CC00BCAB90 /* UIKit.framework */,
 				3D6E4A0F166CE5CC00BCAB90 /* Foundation.framework */,
 				3D6E4A11166CE5CC00BCAB90 /* CoreGraphics.framework */,
+				0B686F12BF9C41C3ADF2DF58 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -78,6 +86,7 @@
 		3D6E4A13166CE5CC00BCAB90 /* MDViewer */ = {
 			isa = PBXGroup;
 			children = (
+				3DAD676E166CE743002BE205 /* iPad.storyboard */,
 				3D6E4A1C166CE5CC00BCAB90 /* MDAppDelegate.h */,
 				3D6E4A1D166CE5CC00BCAB90 /* MDAppDelegate.m */,
 				3D6E4A14166CE5CC00BCAB90 /* Supporting Files */,
@@ -109,6 +118,7 @@
 				3D6E4A05166CE5CB00BCAB90 /* Sources */,
 				3D6E4A06166CE5CB00BCAB90 /* Frameworks */,
 				3D6E4A07166CE5CB00BCAB90 /* Resources */,
+				FD494839C5BD4D48B2CBDA71 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -155,10 +165,28 @@
 				3D6E4A20166CE5CC00BCAB90 /* Default.png in Resources */,
 				3D6E4A22166CE5CC00BCAB90 /* Default@2x.png in Resources */,
 				3D6E4A24166CE5CC00BCAB90 /* Default-568h@2x.png in Resources */,
+				3DAD676F166CE743002BE205 /* iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FD494839C5BD4D48B2CBDA71 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3D6E4A05166CE5CB00BCAB90 /* Sources */ = {
@@ -238,6 +266,7 @@
 		};
 		3D6E4A28166CE5CC00BCAB90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0188B77F0B04425D8BA8E22E /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDViewer/MDViewer-Prefix.pch";
@@ -249,6 +278,7 @@
 		};
 		3D6E4A29166CE5CC00BCAB90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0188B77F0B04425D8BA8E22E /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDViewer/MDViewer-Prefix.pch";
@@ -277,6 +307,7 @@
 				3D6E4A29166CE5CC00BCAB90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
