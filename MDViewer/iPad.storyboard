@@ -19,7 +19,7 @@
             </objects>
             <point key="canvasLocation" x="1009" y="637"/>
         </scene>
-        <!--Tree View Controller - Root View Controller-->
+        <!--Tree View Controller - Files-->
         <scene sceneID="y1T-Fi-u7Z">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="tPu-bg-An8" customClass="MDTreeViewController" sceneMemberID="viewController">
@@ -43,7 +43,13 @@
                             <outlet property="delegate" destination="tPu-bg-An8" id="iHC-ju-bJi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="aqH-MB-wKX"/>
+                    <navigationItem key="navigationItem" title="Files" id="aqH-MB-wKX">
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="vQn-im-2eU">
+                            <connections>
+                                <segue destination="w4t-9y-Zyi" kind="push" id="WDr-Af-NXh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="view" destination="uxa-we-xRS" id="Imf-aJ-zHM"/>
                     </connections>
@@ -51,6 +57,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vI-ir-58G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1543" y="-300"/>
+        </scene>
+        <!--Login View Controller - Dropbox Login-->
+        <scene sceneID="V2G-Jc-zqU">
+            <objects>
+                <tableViewController id="w4t-9y-Zyi" customClass="MDLoginViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="b84-Cg-A8V">
+                        <rect key="frame" x="0.0" y="64" width="320" height="788"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmailCell" textLabel="POY-DQ-5cO" style="IBUITableViewCellStyleDefault" id="g60-6S-4ZM">
+                                <rect key="frame" x="0.0" y="34" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POY-DQ-5cO">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PasswordCell" textLabel="Hss-7L-JTH" style="IBUITableViewCellStyleDefault" id="iIS-5t-mAC">
+                                <rect key="frame" x="0.0" y="79" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hss-7L-JTH">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="w4t-9y-Zyi" id="4Wq-qh-wVG"/>
+                            <outlet property="delegate" destination="w4t-9y-Zyi" id="AiI-Os-snP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Dropbox Login" id="P8g-HH-pnM"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ns9-gY-OX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2053" y="-300"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vHG-rx-Lsx">
@@ -83,6 +142,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="MDLoginViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLoginViewController.h"/>
+        </class>
         <class className="MDTreeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MDTreeViewController.h"/>
         </class>

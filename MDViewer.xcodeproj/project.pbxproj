@@ -18,6 +18,7 @@
 		3D6E4A24166CE5CC00BCAB90 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D6E4A23166CE5CC00BCAB90 /* Default-568h@2x.png */; };
 		3DAD676F166CE743002BE205 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DAD676E166CE743002BE205 /* iPad.storyboard */; };
 		3DAD6773166CEA5E002BE205 /* MDTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD6772166CEA5E002BE205 /* MDTreeViewController.m */; };
+		3DAD6776166CED97002BE205 /* MDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD6775166CED97002BE205 /* MDLoginViewController.m */; };
 		D4849548ED334356A0A223A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B686F12BF9C41C3ADF2DF58 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,8 @@
 		3DAD676E166CE743002BE205 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
 		3DAD6771166CEA5E002BE205 /* MDTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTreeViewController.h; sourceTree = "<group>"; };
 		3DAD6772166CEA5E002BE205 /* MDTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTreeViewController.m; sourceTree = "<group>"; };
+		3DAD6774166CED97002BE205 /* MDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLoginViewController.h; sourceTree = "<group>"; };
+		3DAD6775166CED97002BE205 /* MDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 				3DAD676E166CE743002BE205 /* iPad.storyboard */,
 				3D6E4A1C166CE5CC00BCAB90 /* MDAppDelegate.h */,
 				3D6E4A1D166CE5CC00BCAB90 /* MDAppDelegate.m */,
+				3DAD6774166CED97002BE205 /* MDLoginViewController.h */,
+				3DAD6775166CED97002BE205 /* MDLoginViewController.m */,
 				3DAD6771166CEA5E002BE205 /* MDTreeViewController.h */,
 				3DAD6772166CEA5E002BE205 /* MDTreeViewController.m */,
 				3D6E4A14166CE5CC00BCAB90 /* Supporting Files */,
@@ -201,6 +206,7 @@
 				3D6E4A1A166CE5CC00BCAB90 /* main.m in Sources */,
 				3D6E4A1E166CE5CC00BCAB90 /* MDAppDelegate.m in Sources */,
 				3DAD6773166CEA5E002BE205 /* MDTreeViewController.m in Sources */,
+				3DAD6776166CED97002BE205 /* MDLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
