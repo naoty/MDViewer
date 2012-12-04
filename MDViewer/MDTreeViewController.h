@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DropboxSDK/DropboxSDK.h>
 
-@interface MDTreeViewController : UITableViewController
+@interface MDTreeViewController : UITableViewController <DBRestClientDelegate>
+{
+    DBRestClient *_restClient;
+    NSMutableArray *_fileNames;
+}
+
+@property (nonatomic) IBOutlet UITableView *tableView;
 
 @end

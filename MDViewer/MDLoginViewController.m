@@ -49,6 +49,10 @@
 {
     if (![[DBSession sharedSession] isLinked]) {
         [[DBSession sharedSession] linkFromController:self];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        DNSLog(@"Already linked");
+        [[DBSession sharedSession] unlinkAll];
     }
 }
 

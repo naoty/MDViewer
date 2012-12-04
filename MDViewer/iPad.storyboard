@@ -51,6 +51,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="uxa-we-xRS" id="Ypb-sU-9oK"/>
                         <outlet property="view" destination="uxa-we-xRS" id="Imf-aJ-zHM"/>
                     </connections>
                 </tableViewController>
@@ -155,7 +156,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="view" destination="b84-Cg-A8V" id="h1e-Dy-CN3"/>
+                        <outlet property="view" destination="b84-Cg-A8V" id="CgN-Mg-Kar"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ns9-gY-OX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -201,6 +202,9 @@
         </class>
         <class className="MDTreeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MDTreeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
