@@ -31,7 +31,9 @@
     MDAppDelegate *appDelegate = (MDAppDelegate *) [[UIApplication sharedApplication] delegate];
     appDelegate.loginDelegate = self;
     
-    _fileNames = [NSMutableArray array];
+    _files = [NSMutableArray array];
+    _fileManager = [NSFileManager defaultManager];
+    _cachesDir = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
     
     if ([[DBSession sharedSession] isLinked]) {
         [[self restClient] loadMetadata:@"/"];
@@ -62,7 +64,7 @@
         self.loginButton.title = @"Logout";
     } else {
         [[DBSession sharedSession] unlinkAll];
-        [_fileNames removeAllObjects];
+        [_files removeAllObjects];
         [self.tableView reloadData];
 
         self.loginButton.title = @"Login";
@@ -78,7 +80,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_fileNames count];
+    return [_files count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -86,7 +88,8 @@
     static NSString *CellIdentifier = @"FileCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = _fileNames[indexPath.row];
+    DBMetadata *file = _files[indexPath.row];
+    cell.textLabel.text = file.filename;
     
     return cell;
 }
@@ -95,6 +98,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Download to Cache
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *filePath = [_cachesDir stringByAppendingPathComponent:cell.textLabel.text];
+    
+    if ([_fileManager fileExistsAtPath:filePath]) {
+        DNSLog(@"File exists: %@", filePath);
+        // Show the markdown file
+    } else {
+        DNSLog(@"File doesn't exist: %@", filePath);
+        
+        DBMetadata *file = _files[indexPath.row];
+        [[self restClient] loadFile:file.path intoPath:filePath];
+    }
 }
 
 #pragma mark - DBRestClientDelegate
@@ -106,7 +122,7 @@
         for (DBMetadata *file in metadata.contents) {
             DNSLog(@"\t%@", file.filename);
             
-            [_fileNames addObject:file.filename];
+            [_files addObject:file];
         }
         [self.tableView reloadData];
     }
@@ -115,6 +131,18 @@
 - (void)restClient:(DBRestClient *)client loadMetadataFailedWithError:(NSError *)error
 {
     DNSLog(@"Error loading metadata: %@", error);
+}
+
+- (void)restClient:(DBRestClient *)client loadedFile:(NSString *)destPath
+{
+    DNSLog(@"File loaded into path: %@", destPath);
+    
+    // Show the markdown file
+}
+
+- (void)restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error
+{
+    DNSLog(@"There was an error loading file - %@", error);
 }
 
 #pragma mark - MDLoginDelegate

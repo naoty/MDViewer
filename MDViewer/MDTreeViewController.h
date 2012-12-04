@@ -13,7 +13,9 @@
 @interface MDTreeViewController : UITableViewController <DBRestClientDelegate, MDLoginDelegate>
 {
     DBRestClient *_restClient;
-    NSMutableArray *_fileNames;
+    NSMutableArray *_files;
+    NSFileManager *_fileManager;
+    NSString *_cachesDir;
 }
 
 @property (nonatomic) IBOutlet UITableView *tableView;
