@@ -13,9 +13,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Dropbox iOS SDK
-    self.dbAppKey = @"sbf61qacwyv8xvl";
-    self.dbAppSecret = @"zz43imqqr01yxgy";
-    self.dbRoot = kDBRootAppFolder;
+    NSString *appKey = @"sbf61qacwyv8xvl";
+    NSString *appSecret = @"zz43imqqr01yxgy";
+    
+    DBSession *dbSession = [[DBSession alloc] initWithAppKey:appKey appSecret:appSecret root:kDBRootAppFolder];
+    [DBSession setSharedSession:dbSession];
     
     return YES;
 }
@@ -45,6 +47,17 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    if ([[DBSession sharedSession] handleOpenURL:url]) {
+        if ([[DBSession sharedSession] isLinked]) {
+            DNSLog(@"App linked successfully!");
+        }
+        return YES;
+    }
+    return NO;
 }
 
 @end

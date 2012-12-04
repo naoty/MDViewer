@@ -40,6 +40,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didPushButton:(id)sender
+{
+    [self loginWithDropbox];
+}
+
+- (void)loginWithDropbox
+{
+    if (![[DBSession sharedSession] isLinked]) {
+        [[DBSession sharedSession] linkFromController:self];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -105,8 +117,7 @@
         [_passwordField becomeFirstResponder];
     } else {
         [_passwordField resignFirstResponder];
-        // send request
-        
+        [self loginWithDropbox];
     }
     return YES;
 }

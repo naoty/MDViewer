@@ -148,7 +148,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Dropbox Login" id="P8g-HH-pnM">
-                        <barButtonItem key="rightBarButtonItem" title="Login" style="done" id="c60-3t-iq0"/>
+                        <barButtonItem key="rightBarButtonItem" title="Login" style="done" id="c60-3t-iq0">
+                            <connections>
+                                <action selector="didPushButton:" destination="w4t-9y-Zyi" id="PbV-Wf-bCm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="view" destination="b84-Cg-A8V" id="h1e-Dy-CN3"/>
@@ -191,6 +195,9 @@
     <classes>
         <class className="MDLoginViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MDLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didPushButton:"/>
+            </relationships>
         </class>
         <class className="MDTreeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MDTreeViewController.h"/>

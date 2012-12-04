@@ -12,8 +12,5 @@
 @interface MDAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic) UIWindow *window;
-@property (nonatomic) NSString *dbAppKey;
-@property (nonatomic) NSString *dbAppSecret;
-@property (nonatomic) NSString *dbRoot;
 
 @end

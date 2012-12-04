@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DropboxSDK/DropboxSDK.h>
 
 @interface MDLoginViewController : UITableViewController <UITextFieldDelegate>
 {
     UITextField *_emailField;
     UITextField *_passwordField;
 }
+
+- (IBAction)didPushButton:(id)sender;
 
 @end
