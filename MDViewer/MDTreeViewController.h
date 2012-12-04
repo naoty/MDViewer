@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <DropboxSDK/DropboxSDK.h>
+#import "MDLoginDelegate.h"
 
-@interface MDTreeViewController : UITableViewController <DBRestClientDelegate>
+@interface MDTreeViewController : UITableViewController <DBRestClientDelegate, MDLoginDelegate>
 {
     DBRestClient *_restClient;
     NSMutableArray *_fileNames;

@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <DropboxSDK/DropboxSDK.h>
 
+@protocol MDLoginDelegate;
+
 @interface MDAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic) UIWindow *window;
+@property (nonatomic) id<MDLoginDelegate> loginDelegate;
 
 @end

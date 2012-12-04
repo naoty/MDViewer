@@ -28,10 +28,14 @@
 {
     [super viewDidLoad];
     
+    MDAppDelegate *appDelegate = (MDAppDelegate *) [[UIApplication sharedApplication] delegate];
+    appDelegate.loginDelegate = self;
+    
     _fileNames = [NSMutableArray array];
     
     if ([[DBSession sharedSession] isLinked]) {
-        [self loginWithDropbox];
+        [[self restClient] loadMetadata:@"/"];
+        self.loginButton.title = @"Logout";
     }
 }
 
@@ -63,12 +67,6 @@
 
         self.loginButton.title = @"Login";
     }
-}
-
-- (void)loginWithDropbox
-{
-    [[self restClient] loadMetadata:@"/"];
-    self.loginButton.title = @"Logout";
 }
 
 #pragma mark - Table view data source
@@ -117,6 +115,13 @@
 - (void)restClient:(DBRestClient *)client loadMetadataFailedWithError:(NSError *)error
 {
     DNSLog(@"Error loading metadata: %@", error);
+}
+
+#pragma mark - MDLoginDelegate
+
+- (void)didLogin
+{
+    [[self restClient] loadMetadata:@"/"];
 }
 
 @end

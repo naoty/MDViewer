@@ -55,6 +55,7 @@
     if ([[DBSession sharedSession] handleOpenURL:url]) {
         if ([[DBSession sharedSession] isLinked]) {
             DNSLog(@"App linked successfully!");
+            [self.loginDelegate didLogin];
         }
         return YES;
     }
