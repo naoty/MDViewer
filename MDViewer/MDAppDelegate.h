@@ -12,6 +12,5 @@
 @interface MDAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic) UIWindow *window;
-@property (nonatomic) id loginDelegate;
 
 @end

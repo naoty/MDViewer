@@ -16,5 +16,8 @@
 }
 
 @property (nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) IBOutlet UIBarButtonItem *loginButton;
+
+- (IBAction)didPushButton:(id)sender;
 
 @end

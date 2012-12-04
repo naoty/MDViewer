@@ -28,12 +28,11 @@
 {
     [super viewDidLoad];
     
-    MDAppDelegate *appDelegate = (MDAppDelegate *) [[UIApplication sharedApplication] delegate];
-    appDelegate.loginDelegate = self;
-    
     _fileNames = [NSMutableArray array];
     
-    [[self restClient] loadMetadata:@"/"];
+    if ([[DBSession sharedSession] isLinked]) {
+        [self loginWithDropbox];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,6 +48,27 @@
         _restClient.delegate = self;
     }
     return _restClient;
+}
+
+- (IBAction)didPushButton:(id)sender
+{
+    if (![[DBSession sharedSession] isLinked]) {
+        [[DBSession sharedSession] linkFromController:self];
+        
+        self.loginButton.title = @"Logout";
+    } else {
+        [[DBSession sharedSession] unlinkAll];
+        [_fileNames removeAllObjects];
+        [self.tableView reloadData];
+
+        self.loginButton.title = @"Login";
+    }
+}
+
+- (void)loginWithDropbox
+{
+    [[self restClient] loadMetadata:@"/"];
+    self.loginButton.title = @"Logout";
 }
 
 #pragma mark - Table view data source
