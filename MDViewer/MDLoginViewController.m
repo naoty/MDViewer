@@ -54,55 +54,61 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CellIdentifier = indexPath.row == 0 ? @"EmailCell" : @"PasswordCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    // Cell
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectZero];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    // Label
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 11, 85, 21)];
+    textLabel.text = indexPath.row == 0 ? @"Email" : @"Password";
+    textLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+    textLabel.backgroundColor = [UIColor clearColor];
+    [cell.contentView addSubview:textLabel];
+    
+    // TextField
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(103, 11, 177, 21)];
+    textField.delegate = self;
+    textField.font = [UIFont systemFontOfSize:17.0f];
+    textField.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
+    textField.textAlignment = UIControlContentVerticalAlignmentCenter;
+    textField.borderStyle = UITextBorderStyleNone;
+    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    textField.keyboardType = indexPath.row == 0 ? UIKeyboardTypeEmailAddress : UIKeyboardTypeASCIICapable;
+    textField.returnKeyType = indexPath.row == 0 ? UIReturnKeyNext : UIReturnKeyDone;
+    textField.secureTextEntry = indexPath.row == 0 ? NO : YES;
+    [cell.contentView addSubview:textField];
+    
+    if (indexPath.row == 0) {
+        _emailField = textField;
+    } else {
+        _passwordField = textField;
+    }
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        [_emailField becomeFirstResponder];
+    } else {
+        [_passwordField becomeFirstResponder];
+    }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == _emailField) {
+        [_passwordField becomeFirstResponder];
+    } else {
+        [_passwordField resignFirstResponder];
+        // send request
+        
+    }
+    return YES;
 }
 
 @end

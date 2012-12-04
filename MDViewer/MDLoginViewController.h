@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MDLoginViewController : UITableViewController
+@interface MDLoginViewController : UITableViewController <UITextFieldDelegate>
+{
+    UITextField *_emailField;
+    UITextField *_passwordField;
+}
 
 @end
