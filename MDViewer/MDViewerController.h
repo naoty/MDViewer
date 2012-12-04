@@ -10,4 +10,8 @@
 
 @interface MDViewerController : UIViewController
 
+@property (nonatomic) IBOutlet UIWebView *webView;
+
+- (void)openMarkdown:(NSString *)path;
+
 @end

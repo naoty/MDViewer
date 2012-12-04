@@ -7,6 +7,7 @@
 //
 
 #import "MDViewerController.h"
+#import "GHMarkdownParser.h"
 
 @interface MDViewerController ()
 
@@ -33,6 +34,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)openMarkdown:(NSString *)path
+{
+    NSError *error = nil;
+    NSString *markdown = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    NSString *html = markdown.flavoredHTMLStringFromMarkdown;
+    
+    [self.webView loadHTMLString:html baseURL:nil];
 }
 
 @end

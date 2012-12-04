@@ -8,6 +8,7 @@
 
 #import "MDTreeViewController.h"
 #import "MDAppDelegate.h"
+#import "MDViewerController.h"
 
 @interface MDTreeViewController ()
 
@@ -104,7 +105,7 @@
     
     if ([_fileManager fileExistsAtPath:filePath]) {
         DNSLog(@"File exists: %@", filePath);
-        // Show the markdown file
+        [self.viewerController openMarkdown:filePath];
     } else {
         DNSLog(@"File doesn't exist: %@", filePath);
         
@@ -136,8 +137,7 @@
 - (void)restClient:(DBRestClient *)client loadedFile:(NSString *)destPath
 {
     DNSLog(@"File loaded into path: %@", destPath);
-    
-    // Show the markdown file
+    [self.viewerController openMarkdown:destPath];
 }
 
 - (void)restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error

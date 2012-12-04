@@ -10,6 +10,8 @@
 #import <DropboxSDK/DropboxSDK.h>
 #import "MDLoginDelegate.h"
 
+@class MDViewerController;
+
 @interface MDTreeViewController : UITableViewController <DBRestClientDelegate, MDLoginDelegate>
 {
     DBRestClient *_restClient;
@@ -17,6 +19,8 @@
     NSFileManager *_fileManager;
     NSString *_cachesDir;
 }
+
+@property (nonatomic) MDViewerController *viewerController;
 
 @property (nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) IBOutlet UIBarButtonItem *loginButton;

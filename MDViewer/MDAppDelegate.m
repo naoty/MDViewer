@@ -8,6 +8,7 @@
 
 #import "MDAppDelegate.h"
 #import "MDTreeViewController.h"
+#import "MDViewerController.h"
 
 @implementation MDAppDelegate
 
@@ -19,6 +20,12 @@
     
     DBSession *dbSession = [[DBSession alloc] initWithAppKey:appKey appSecret:appSecret root:kDBRootAppFolder];
     [DBSession setSharedSession:dbSession];
+    
+    // Controllers
+    UISplitViewController *splitViewController = (UISplitViewController *) self.window.rootViewController;
+    MDTreeViewController *treeViewController = (MDTreeViewController *) [splitViewController.viewControllers[0] topViewController];
+    MDViewerController *viewerController = (MDViewerController *) [splitViewController.viewControllers lastObject];
+    treeViewController.viewerController = viewerController;
     
     return YES;
 }

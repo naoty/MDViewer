@@ -20,6 +20,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="view" destination="oIW-li-pzm" id="gw9-db-85y"/>
+                        <outlet property="webView" destination="oIW-li-pzm" id="WJh-25-QEg"/>
                     </connections>
                 </viewController>
             </objects>
