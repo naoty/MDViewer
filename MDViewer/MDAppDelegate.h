@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DropboxSDK/DropboxSDK.h>
 
 @interface MDAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic) UIWindow *window;
+@property (nonatomic) NSString *dbAppKey;
+@property (nonatomic) NSString *dbAppSecret;
+@property (nonatomic) NSString *dbRoot;
 
 @end

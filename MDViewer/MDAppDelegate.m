@@ -12,6 +12,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Dropbox iOS SDK
+    self.dbAppKey = @"sbf61qacwyv8xvl";
+    self.dbAppSecret = @"zz43imqqr01yxgy";
+    self.dbRoot = kDBRootAppFolder;
+    
     return YES;
 }
 
