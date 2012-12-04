@@ -1,11 +1,14 @@
 
 PODS:
 - Dropbox-iOS-SDK (1.3.2)
+- GHMarkdownParser (0.0.1)
 
 DEPENDENCIES:
 - Dropbox-iOS-SDK
+- GHMarkdownParser
 
 SPEC CHECKSUMS:
   Dropbox-iOS-SDK: 3e041f67271ba591280b329cc376d8ad1a587c51
+  GHMarkdownParser: 52174cb8daaaa4a9eafb84de3b252b4f3cc0cf91
 
 COCOAPODS: 0.16.0
