@@ -122,7 +122,7 @@
     }
     
     if ([_fileManager fileExistsAtPath:filePath]) {
-        [self.viewerController openMarkdown:filePath];
+        [self.viewerController openFile:filePath];
     } else {
         DNSLog(@"Loading %@ ...", file.path);
         [[self restClient] loadFile:file.path intoPath:filePath];
@@ -150,7 +150,7 @@
 - (void)restClient:(DBRestClient *)client loadedFile:(NSString *)destPath
 {
     DNSLog(@"File loaded into path: %@", destPath);
-    [self.viewerController openMarkdown:destPath];
+    [self.viewerController openFile:destPath];
 }
 
 - (void)restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error

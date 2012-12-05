@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface MDViewerController : UIViewController
+{
+    NSString *_html;
+}
 
 @property (nonatomic) IBOutlet UIWebView *webView;
 
-- (void)openMarkdown:(NSString *)path;
+- (void)openFile:(NSString *)path;
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D45AB38166F76B900F6698A /* NSString+Filetype.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AB37166F76B900F6698A /* NSString+Filetype.m */; };
 		3D6E4A0E166CE5CC00BCAB90 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6E4A0D166CE5CC00BCAB90 /* UIKit.framework */; };
 		3D6E4A10166CE5CC00BCAB90 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6E4A0F166CE5CC00BCAB90 /* Foundation.framework */; };
 		3D6E4A12166CE5CC00BCAB90 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6E4A11166CE5CC00BCAB90 /* CoreGraphics.framework */; };
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		0188B77F0B04425D8BA8E22E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		0B686F12BF9C41C3ADF2DF58 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D45AB36166F76B900F6698A /* NSString+Filetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Filetype.h"; sourceTree = "<group>"; };
+		3D45AB37166F76B900F6698A /* NSString+Filetype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Filetype.m"; sourceTree = "<group>"; };
 		3D6E4A09166CE5CC00BCAB90 /* MDViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6E4A0D166CE5CC00BCAB90 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3D6E4A0F166CE5CC00BCAB90 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -101,6 +104,8 @@
 				3DAD6772166CEA5E002BE205 /* MDTreeViewController.m */,
 				3DADBE5A166E4E720029DA73 /* MDViewerController.h */,
 				3DADBE5B166E4E720029DA73 /* MDViewerController.m */,
+				3D45AB36166F76B900F6698A /* NSString+Filetype.h */,
+				3D45AB37166F76B900F6698A /* NSString+Filetype.m */,
 				3D6E4A14166CE5CC00BCAB90 /* Supporting Files */,
 			);
 			path = MDViewer;
@@ -209,6 +214,7 @@
 				3D6E4A1E166CE5CC00BCAB90 /* MDAppDelegate.m in Sources */,
 				3DAD6773166CEA5E002BE205 /* MDTreeViewController.m in Sources */,
 				3DADBE5C166E4E720029DA73 /* MDViewerController.m in Sources */,
+				3D45AB38166F76B900F6698A /* NSString+Filetype.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

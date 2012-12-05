@@ -8,6 +8,7 @@
 
 #import "MDViewerController.h"
 #import "GHMarkdownParser.h"
+#import "NSString+Filetype.h"
 
 @interface MDViewerController ()
 
@@ -27,7 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    _html = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,13 +38,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)openMarkdown:(NSString *)path
+- (void)openFile:(NSString *)file
 {
-    NSError *error = nil;
-    NSString *markdown = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-    NSString *html = markdown.flavoredHTMLStringFromMarkdown;
+    if ([file isMarkdown]) {
+        NSError *error = nil;
+        NSString *markdown = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
+        _html = markdown.flavoredHTMLStringFromMarkdown;
+        
+        [self.webView loadHTMLString:_html baseURL:nil];
+    }
     
-    [self.webView loadHTMLString:html baseURL:nil];
+    else if ([file isCSS]) {
+        DNSLog(@"This filetype is css");
+    }
 }
 
 @end
