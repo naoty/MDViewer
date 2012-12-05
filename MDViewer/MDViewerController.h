@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class MDHTML;
+
 @interface MDViewerController : UIViewController
 {
-    NSString *_html;
+//    NSString *_html;
+    MDHTML *_html;
 }
 
 @property (nonatomic) IBOutlet UIWebView *webView;

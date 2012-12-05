@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D45AB38166F76B900F6698A /* NSString+Filetype.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AB37166F76B900F6698A /* NSString+Filetype.m */; };
+		3D45AB42166F8C0A00F6698A /* MDHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45AB41166F8C0A00F6698A /* MDHTML.m */; };
 		3D6E4A0E166CE5CC00BCAB90 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6E4A0D166CE5CC00BCAB90 /* UIKit.framework */; };
 		3D6E4A10166CE5CC00BCAB90 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6E4A0F166CE5CC00BCAB90 /* Foundation.framework */; };
 		3D6E4A12166CE5CC00BCAB90 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6E4A11166CE5CC00BCAB90 /* CoreGraphics.framework */; };
@@ -28,6 +29,8 @@
 		0B686F12BF9C41C3ADF2DF58 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D45AB36166F76B900F6698A /* NSString+Filetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Filetype.h"; sourceTree = "<group>"; };
 		3D45AB37166F76B900F6698A /* NSString+Filetype.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Filetype.m"; sourceTree = "<group>"; };
+		3D45AB40166F8C0A00F6698A /* MDHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHTML.h; sourceTree = "<group>"; };
+		3D45AB41166F8C0A00F6698A /* MDHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHTML.m; sourceTree = "<group>"; };
 		3D6E4A09166CE5CC00BCAB90 /* MDViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6E4A0D166CE5CC00BCAB90 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3D6E4A0F166CE5CC00BCAB90 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -99,6 +102,8 @@
 				3DAD676E166CE743002BE205 /* iPad.storyboard */,
 				3D6E4A1C166CE5CC00BCAB90 /* MDAppDelegate.h */,
 				3D6E4A1D166CE5CC00BCAB90 /* MDAppDelegate.m */,
+				3D45AB40166F8C0A00F6698A /* MDHTML.h */,
+				3D45AB41166F8C0A00F6698A /* MDHTML.m */,
 				3DBC0834166E365700D141D6 /* MDLoginDelegate.h */,
 				3DAD6771166CEA5E002BE205 /* MDTreeViewController.h */,
 				3DAD6772166CEA5E002BE205 /* MDTreeViewController.m */,
@@ -215,6 +220,7 @@
 				3DAD6773166CEA5E002BE205 /* MDTreeViewController.m in Sources */,
 				3DADBE5C166E4E720029DA73 /* MDViewerController.m in Sources */,
 				3D45AB38166F76B900F6698A /* NSString+Filetype.m in Sources */,
+				3D45AB42166F8C0A00F6698A /* MDHTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

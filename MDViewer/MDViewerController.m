@@ -9,6 +9,7 @@
 #import "MDViewerController.h"
 #import "GHMarkdownParser.h"
 #import "NSString+Filetype.h"
+#import "MDHTML.h"
 
 @interface MDViewerController ()
 
@@ -29,7 +30,7 @@
 {
     [super viewDidLoad];
     
-    _html = @"";
+    _html = [[MDHTML alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,17 +41,16 @@
 
 - (void)openFile:(NSString *)file
 {
+    NSError *error = nil;
+    NSString *fileString = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
+    
     if ([file isMarkdown]) {
-        NSError *error = nil;
-        NSString *markdown = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
-        _html = markdown.flavoredHTMLStringFromMarkdown;
-        
-        [self.webView loadHTMLString:_html baseURL:nil];
+        _html.body = fileString.flavoredHTMLStringFromMarkdown;
+    } else if ([file isCSS]) {
+        _html.style = fileString;
     }
     
-    else if ([file isCSS]) {
-        DNSLog(@"This filetype is css");
-    }
+    [self.webView loadHTMLString:[_html stringify] baseURL:nil];
 }
 
 @end
