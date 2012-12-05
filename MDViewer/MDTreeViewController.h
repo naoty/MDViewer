@@ -20,6 +20,7 @@
     NSString *_cachesDir;
 }
 
+@property (nonatomic, copy) NSString *pwd;
 @property (nonatomic) MDViewerController *viewerController;
 
 @property (nonatomic) IBOutlet UITableView *tableView;

@@ -20,7 +20,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -32,12 +31,20 @@
     MDAppDelegate *appDelegate = (MDAppDelegate *) [[UIApplication sharedApplication] delegate];
     appDelegate.loginDelegate = self;
     
+    if (self.pwd == nil) {
+        self.pwd = @"/";
+    }
+    if (self.title == nil) {
+        self.title = @"/";
+    }
+    
     _files = [NSMutableArray array];
     _fileManager = [NSFileManager defaultManager];
     _cachesDir = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
     
     if ([[DBSession sharedSession] isLinked]) {
-        [[self restClient] loadMetadata:@"/"];
+        DNSLog(@"Loading metadata...");
+        [[self restClient] loadMetadata:self.pwd];
         self.loginButton.title = @"Logout";
     }
 }
@@ -103,13 +110,21 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *filePath = [_cachesDir stringByAppendingPathComponent:cell.textLabel.text];
     
+    DBMetadata *file = _files[indexPath.row];
+    
+    if (file.isDirectory) {
+        MDTreeViewController *childController = [self.storyboard instantiateViewControllerWithIdentifier:@"MDTreeViewController"];
+        childController.pwd = file.path;
+        childController.title = file.filename;
+        childController.viewerController = self.viewerController;
+        [self.navigationController pushViewController:childController animated:YES];
+        return;
+    }
+    
     if ([_fileManager fileExistsAtPath:filePath]) {
-        DNSLog(@"File exists: %@", filePath);
         [self.viewerController openMarkdown:filePath];
     } else {
-        DNSLog(@"File doesn't exist: %@", filePath);
-        
-        DBMetadata *file = _files[indexPath.row];
+        DNSLog(@"Loading %@ ...", file.path);
         [[self restClient] loadFile:file.path intoPath:filePath];
     }
 }
@@ -118,11 +133,9 @@
 
 - (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata
 {
+    DNSLog(@"Metadata loaded into path: %@", metadata.path);
     if (metadata.isDirectory) {
-        DNSLog(@"Directory '%@' contains:", metadata.path);
         for (DBMetadata *file in metadata.contents) {
-            DNSLog(@"\t%@", file.filename);
-            
             [_files addObject:file];
         }
         [self.tableView reloadData];
@@ -149,7 +162,7 @@
 
 - (void)didLogin
 {
-    [[self restClient] loadMetadata:@"/"];
+    [[self restClient] loadMetadata:self.pwd];
 }
 
 @end
