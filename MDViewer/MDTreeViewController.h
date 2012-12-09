@@ -22,10 +22,13 @@
 
 @property (nonatomic, copy) NSString *pwd;
 @property (nonatomic) MDViewerController *viewerController;
+@property (nonatomic) UIBarButtonItem *indicatorItem;
 
 @property (nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) IBOutlet UIBarButtonItem *loginButton;
+@property (nonatomic) IBOutlet UIBarButtonItem *refreshItem;
 
 - (IBAction)didPushButton:(id)sender;
+- (IBAction)didPushRefreshItem:(id)sender;
 
 @end

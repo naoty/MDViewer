@@ -42,8 +42,13 @@
     _fileManager = [NSFileManager defaultManager];
     _cachesDir = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
     
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [indicatorView startAnimating];
+    self.indicatorItem = [[UIBarButtonItem alloc] initWithCustomView:indicatorView];
+    
     if ([[DBSession sharedSession] isLinked]) {
         DNSLog(@"Loading metadata...");
+        [self showIndicatorItem];
         [[self restClient] loadMetadata:self.pwd];
         self.loginButton.title = @"Logout";
     }
@@ -77,6 +82,35 @@
 
         self.loginButton.title = @"Login";
     }
+}
+
+- (IBAction)didPushRefreshItem:(id)sender
+{
+    // Clear cells
+    [_files removeAllObjects];
+    [self.tableView reloadData];
+    
+    // Load metadata
+    if ([[DBSession sharedSession] isLinked]) {
+        [self showIndicatorItem];
+        [[self restClient] loadMetadata:self.pwd];
+    }
+}
+
+- (void)showIndicatorItem
+{
+    NSMutableArray *items = [self.toolbarItems mutableCopy];
+    [items removeObjectAtIndex:0];
+    [items insertObject:self.indicatorItem atIndex:0];
+    [self setToolbarItems:items];
+}
+
+- (void)hideIndicatorItem
+{
+    NSMutableArray *items = [self.toolbarItems mutableCopy];
+    [items removeObjectAtIndex:0];
+    [items insertObject:self.refreshItem atIndex:0];
+    [self setToolbarItems:items];
 }
 
 #pragma mark - Table view data source
@@ -134,6 +168,7 @@
 - (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata
 {
     DNSLog(@"Metadata loaded into path: %@", metadata.path);
+    [self hideIndicatorItem];
     if (metadata.isDirectory) {
         for (DBMetadata *file in metadata.contents) {
             [_files addObject:file];
@@ -145,6 +180,7 @@
 - (void)restClient:(DBRestClient *)client loadMetadataFailedWithError:(NSError *)error
 {
     DNSLog(@"Error loading metadata: %@", error);
+    [self hideIndicatorItem];
 }
 
 - (void)restClient:(DBRestClient *)client loadedFile:(NSString *)destPath
