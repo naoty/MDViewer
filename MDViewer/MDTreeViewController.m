@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "MDAppDelegate.h"
 #import "MDViewerController.h"
+#import "NSString+Filetype.h"
 
 @interface MDTreeViewController ()
 
@@ -162,7 +163,10 @@
     DNSLog(@"Metadata loaded into path: %@", metadata.path);
     if (metadata.isDirectory) {
         for (DBMetadata *file in metadata.contents) {
-            [_files addObject:file];
+            // List only directory, markdown or css
+            if (file.isDirectory || file.path.isMarkdown || file.path.isCSS) {
+                [_files addObject:file];
+            }
         }
         [self.tableView reloadData];
     }
