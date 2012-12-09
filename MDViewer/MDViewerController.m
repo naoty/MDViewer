@@ -8,6 +8,7 @@
 
 #import "MDViewerController.h"
 #import "GHMarkdownParser.h"
+#import "MBProgressHUD.h"
 #import "NSString+Filetype.h"
 #import "MDHTML.h"
 
@@ -51,6 +52,18 @@
     }
     
     [self.webView loadHTMLString:[_html stringify] baseURL:nil];
+}
+
+- (void)showProgress
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading...";
+    hud.dimBackground = YES;
+}
+
+- (void)hideProgress
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 @end

@@ -12,12 +12,13 @@
 
 @interface MDViewerController : UIViewController
 {
-//    NSString *_html;
     MDHTML *_html;
 }
 
 @property (nonatomic) IBOutlet UIWebView *webView;
 
 - (void)openFile:(NSString *)path;
+- (void)showProgress;
+- (void)hideProgress;
 
 @end

@@ -9,6 +9,7 @@
 #import "MDTreeViewController.h"
 #import "MDAppDelegate.h"
 #import "MDViewerController.h"
+#import "MBProgressHUD.h"
 
 @interface MDTreeViewController ()
 
@@ -159,6 +160,7 @@
         [self.viewerController openFile:filePath];
     } else {
         DNSLog(@"Loading %@ ...", file.path);
+        [self.viewerController showProgress];
         [[self restClient] loadFile:file.path intoPath:filePath];
     }
 }
@@ -186,12 +188,14 @@
 - (void)restClient:(DBRestClient *)client loadedFile:(NSString *)destPath
 {
     DNSLog(@"File loaded into path: %@", destPath);
+    [self.viewerController hideProgress];
     [self.viewerController openFile:destPath];
 }
 
 - (void)restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error
 {
     DNSLog(@"There was an error loading file - %@", error);
+    [self.viewerController hideProgress];
 }
 
 #pragma mark - MDLoginDelegate
