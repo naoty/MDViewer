@@ -140,8 +140,11 @@
         childController.title = file.filename;
         childController.viewerController = self.viewerController;
         [self.navigationController pushViewController:childController animated:YES];
+        
         return;
     }
+    
+    self.viewerController.pwd = file.path;
     
     if ([_fileManager fileExistsAtPath:filePath]) {
         [self.viewerController openFile:filePath];

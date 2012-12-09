@@ -8,18 +8,40 @@
         <scene sceneID="uXj-5v-UvT">
             <objects>
                 <viewController id="Foc-9c-uoi" customClass="MDViewerController" sceneMemberID="viewController">
-                    <webView key="view" contentMode="scaleToFill" id="oIW-li-pzm">
+                    <view key="view" contentMode="scaleToFill" id="uFR-82-Lp4">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <outlet property="delegate" destination="Foc-9c-uoi" id="tzz-v6-dm0"/>
-                        </connections>
-                    </webView>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAN-F5-HUl">
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="916-N0-6ef"/>
+                                    <barButtonItem systemItem="refresh" id="ea0-JH-Svb">
+                                        <connections>
+                                            <action selector="didPushRefreshItem:" destination="Foc-9c-uoi" id="RLI-GE-Lmu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riq-Ja-itT">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="riq-Ja-itT" firstAttribute="leading" secondItem="uFR-82-Lp4" secondAttribute="leading" type="default" id="47f-mx-mWx"/>
+                            <constraint firstItem="riq-Ja-itT" firstAttribute="trailing" secondItem="uFR-82-Lp4" secondAttribute="trailing" type="default" id="DsF-xS-A3m"/>
+                            <constraint firstItem="riq-Ja-itT" firstAttribute="top" secondItem="uFR-82-Lp4" secondAttribute="top" type="default" id="IyZ-7G-rdy"/>
+                            <constraint firstItem="pAN-F5-HUl" firstAttribute="trailing" secondItem="uFR-82-Lp4" secondAttribute="trailing" type="default" id="LPS-hF-ewu"/>
+                            <constraint firstItem="riq-Ja-itT" firstAttribute="bottom" secondItem="pAN-F5-HUl" secondAttribute="top" type="default" id="Mmk-mG-4qE"/>
+                            <constraint firstItem="pAN-F5-HUl" firstAttribute="bottom" secondItem="uFR-82-Lp4" secondAttribute="bottom" type="default" id="Mxn-6B-NCz"/>
+                            <constraint firstItem="pAN-F5-HUl" firstAttribute="leading" secondItem="uFR-82-Lp4" secondAttribute="leading" type="default" id="Wgj-25-DaF"/>
+                        </constraints>
+                    </view>
                     <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="view" destination="oIW-li-pzm" id="gw9-db-85y"/>
-                        <outlet property="webView" destination="oIW-li-pzm" id="WJh-25-QEg"/>
+                        <outlet property="view" destination="uFR-82-Lp4" id="ebh-BK-huV"/>
+                        <outlet property="webView" destination="riq-Ja-itT" id="mev-Zt-IxG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gt-4P-bD0" userLabel="First Responder" sceneMemberID="firstResponder"/>

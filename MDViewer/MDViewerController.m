@@ -42,6 +42,8 @@
 
 - (void)openFile:(NSString *)file
 {
+    _filePath = file;
+    
     NSError *error = nil;
     NSString *fileString = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
     
@@ -64,6 +66,43 @@
 - (void)hideIndicator
 {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (IBAction)didPushRefreshItem:(id)sender
+{
+    if (self.pwd == nil) {
+        return;
+    }
+    
+    if ([[DBSession sharedSession] isLinked]) {
+        DNSLog(@"Loading file...");
+        [self showIndicator];
+        [[self restClient] loadFile:self.pwd intoPath:_filePath];
+    }
+}
+
+- (DBRestClient *)restClient
+{
+    if (!_restClient) {
+        _restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+        _restClient.delegate = self;
+    }
+    return _restClient;
+}
+
+#pragma mark - DBRestClientDelegate
+
+- (void)restClient:(DBRestClient *)client loadedFile:(NSString *)destPath
+{
+    DNSLog(@"Loaded file: %@", destPath);
+    [self openFile:destPath];
+    [self hideIndicator];
+}
+
+- (void)restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error
+{
+    DNSLog(@"Error: %@", error);
+    [self hideIndicator];
 }
 
 @end
