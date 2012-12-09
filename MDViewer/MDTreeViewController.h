@@ -11,6 +11,7 @@
 #import "MDLoginDelegate.h"
 
 @class MDViewerController;
+@class MBProgressHUD;
 
 @interface MDTreeViewController : UITableViewController <DBRestClientDelegate, MDLoginDelegate>
 {
@@ -18,6 +19,7 @@
     NSMutableArray *_files;
     NSFileManager *_fileManager;
     NSString *_cachesDir;
+    MBProgressHUD *_hud;
 }
 
 @property (nonatomic, copy) NSString *pwd;

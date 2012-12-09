@@ -92,14 +92,21 @@
 
 - (void)showIndicator
 {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.labelText = @"Loading...";
-    hud.dimBackground = YES;
+    _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    _hud.labelText = @"Loading...";
+    _hud.dimBackground = YES;
 }
 
 - (void)hideIndicator
 {
     [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+}
+
+- (void)hideIndicatorWithErrorMessage
+{
+    _hud.mode = MBProgressHUDModeText;
+    _hud.labelText = @"Loading Error";
+    [_hud hide:YES afterDelay:1];
 }
 
 #pragma mark - Table view data source
@@ -176,7 +183,7 @@
 - (void)restClient:(DBRestClient *)client loadMetadataFailedWithError:(NSError *)error
 {
     DNSLog(@"Error loading metadata: %@", error);
-    [self hideIndicator];
+    [self hideIndicatorWithErrorMessage];
 }
 
 - (void)restClient:(DBRestClient *)client loadedFile:(NSString *)destPath
@@ -189,7 +196,7 @@
 - (void)restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error
 {
     DNSLog(@"There was an error loading file - %@", error);
-    [self.viewerController hideIndicator];
+    [self.viewerController hideIndicatorWithErrorMessage];
 }
 
 #pragma mark - MDLoginDelegate

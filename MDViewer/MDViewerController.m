@@ -58,14 +58,21 @@
 
 - (void)showIndicator
 {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading...";
-    hud.dimBackground = YES;
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"Loading...";
+    _hud.dimBackground = YES;
 }
 
 - (void)hideIndicator
 {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)hideIndicatorWithErrorMessage
+{
+    _hud.mode = MBProgressHUDModeText;
+    _hud.labelText = @"Loading Error";
+    [_hud hide:YES afterDelay:1];
 }
 
 - (IBAction)didPushRefreshItem:(id)sender
@@ -102,7 +109,7 @@
 - (void)restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error
 {
     DNSLog(@"Error: %@", error);
-    [self hideIndicator];
+    [self hideIndicatorWithErrorMessage];
 }
 
 @end

@@ -10,12 +10,14 @@
 #import <DropboxSDK/DropboxSDK.h>
 
 @class MDHTML;
+@class MBProgressHUD;
 
 @interface MDViewerController : UIViewController <DBRestClientDelegate>
 {
     MDHTML *_html;
     NSString *_filePath;
     DBRestClient *_restClient;
+    MBProgressHUD *_hud;
 }
 
 @property (nonatomic, copy) NSString *pwd;
@@ -24,6 +26,7 @@
 - (void)openFile:(NSString *)path;
 - (void)showIndicator;
 - (void)hideIndicator;
+- (void)hideIndicatorWithErrorMessage;
 - (IBAction)didPushRefreshItem:(id)sender;
 
 @end
