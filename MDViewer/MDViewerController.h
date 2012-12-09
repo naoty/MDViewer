@@ -18,7 +18,7 @@
 @property (nonatomic) IBOutlet UIWebView *webView;
 
 - (void)openFile:(NSString *)path;
-- (void)showProgress;
-- (void)hideProgress;
+- (void)showIndicator;
+- (void)hideIndicator;
 
 @end

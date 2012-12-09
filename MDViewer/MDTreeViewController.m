@@ -7,9 +7,9 @@
 //
 
 #import "MDTreeViewController.h"
+#import "MBProgressHUD.h"
 #import "MDAppDelegate.h"
 #import "MDViewerController.h"
-#import "MBProgressHUD.h"
 
 @interface MDTreeViewController ()
 
@@ -43,13 +43,9 @@
     _fileManager = [NSFileManager defaultManager];
     _cachesDir = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
     
-    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [indicatorView startAnimating];
-    self.indicatorItem = [[UIBarButtonItem alloc] initWithCustomView:indicatorView];
-    
     if ([[DBSession sharedSession] isLinked]) {
         DNSLog(@"Loading metadata...");
-        [self showIndicatorItem];
+        [self showIndicator];
         [[self restClient] loadMetadata:self.pwd];
         self.loginButton.title = @"Logout";
     }
@@ -87,31 +83,22 @@
 
 - (IBAction)didPushRefreshItem:(id)sender
 {
-    // Clear cells
-    [_files removeAllObjects];
-    [self.tableView reloadData];
-    
-    // Load metadata
     if ([[DBSession sharedSession] isLinked]) {
-        [self showIndicatorItem];
+        [self showIndicator];
         [[self restClient] loadMetadata:self.pwd];
     }
 }
 
-- (void)showIndicatorItem
+- (void)showIndicator
 {
-    NSMutableArray *items = [self.toolbarItems mutableCopy];
-    [items removeObjectAtIndex:0];
-    [items insertObject:self.indicatorItem atIndex:0];
-    [self setToolbarItems:items];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.labelText = @"Loading...";
+    hud.dimBackground = YES;
 }
 
-- (void)hideIndicatorItem
+- (void)hideIndicator
 {
-    NSMutableArray *items = [self.toolbarItems mutableCopy];
-    [items removeObjectAtIndex:0];
-    [items insertObject:self.refreshItem atIndex:0];
-    [self setToolbarItems:items];
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -160,7 +147,7 @@
         [self.viewerController openFile:filePath];
     } else {
         DNSLog(@"Loading %@ ...", file.path);
-        [self.viewerController showProgress];
+        [self.viewerController showIndicator];
         [[self restClient] loadFile:file.path intoPath:filePath];
     }
 }
@@ -170,32 +157,32 @@
 - (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata
 {
     DNSLog(@"Metadata loaded into path: %@", metadata.path);
-    [self hideIndicatorItem];
     if (metadata.isDirectory) {
         for (DBMetadata *file in metadata.contents) {
             [_files addObject:file];
         }
         [self.tableView reloadData];
     }
+    [self hideIndicator];
 }
 
 - (void)restClient:(DBRestClient *)client loadMetadataFailedWithError:(NSError *)error
 {
     DNSLog(@"Error loading metadata: %@", error);
-    [self hideIndicatorItem];
+    [self hideIndicator];
 }
 
 - (void)restClient:(DBRestClient *)client loadedFile:(NSString *)destPath
 {
     DNSLog(@"File loaded into path: %@", destPath);
-    [self.viewerController hideProgress];
     [self.viewerController openFile:destPath];
+    [self.viewerController hideIndicator];
 }
 
 - (void)restClient:(DBRestClient *)client loadFileFailedWithError:(NSError *)error
 {
     DNSLog(@"There was an error loading file - %@", error);
-    [self.viewerController hideProgress];
+    [self.viewerController hideIndicator];
 }
 
 #pragma mark - MDLoginDelegate

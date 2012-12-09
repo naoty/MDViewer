@@ -53,7 +53,7 @@
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="refresh" id="EqF-8z-Q1R">
                             <connections>
-                                <action selector="didPushRefreshItem:" destination="tPu-bg-An8" id="Rpa-db-Pg0"/>
+                                <action selector="didPushRefreshItem:" destination="tPu-bg-An8" id="MY8-Y4-Sot"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="LiV-ug-taz"/>
@@ -67,7 +67,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="loginButton" destination="2b2-gN-KZs" id="a3o-hd-tpk"/>
-                        <outlet property="refreshItem" destination="EqF-8z-Q1R" id="Y7k-gD-xcq"/>
                         <outlet property="tableView" destination="uxa-we-xRS" id="Ypb-sU-9oK"/>
                         <outlet property="view" destination="uxa-we-xRS" id="Imf-aJ-zHM"/>
                     </connections>

@@ -54,14 +54,14 @@
     [self.webView loadHTMLString:[_html stringify] baseURL:nil];
 }
 
-- (void)showProgress
+- (void)showIndicator
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading...";
     hud.dimBackground = YES;
 }
 
-- (void)hideProgress
+- (void)hideIndicator
 {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
