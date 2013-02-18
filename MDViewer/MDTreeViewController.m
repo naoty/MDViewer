@@ -167,6 +167,8 @@
 
 - (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata
 {
+    [_files removeAllObjects];
+    
     DNSLog(@"Metadata loaded into path: %@", metadata.path);
     if (metadata.isDirectory) {
         for (DBMetadata *file in metadata.contents) {
