@@ -24,6 +24,7 @@
 @property (nonatomic) IBOutlet UIWebView *webView;
 
 - (void)openFile:(NSString *)path;
+- (void)closeFile;
 - (void)showIndicator;
 - (void)hideIndicator;
 - (void)hideIndicatorWithErrorMessage;

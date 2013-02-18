@@ -75,8 +75,10 @@
         self.loginButton.title = @"Logout";
     } else {
         [[DBSession sharedSession] unlinkAll];
+        
         [_files removeAllObjects];
         [self.tableView reloadData];
+        [self.viewerController closeFile];
 
         self.loginButton.title = @"Login";
     }

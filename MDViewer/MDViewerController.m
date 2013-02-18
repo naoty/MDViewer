@@ -56,6 +56,11 @@
     [self.webView loadHTMLString:[_html stringify] baseURL:nil];
 }
 
+- (void)closeFile
+{
+    [self.webView loadHTMLString:@"" baseURL:nil];
+}
+
 - (void)showIndicator
 {
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
