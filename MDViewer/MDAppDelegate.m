@@ -15,8 +15,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Dropbox iOS SDK
-    NSString *appKey = @"sbf61qacwyv8xvl";
-    NSString *appSecret = @"zz43imqqr01yxgy";
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Secrets" ofType:@"plist"];
+    NSDictionary *secrets = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSString *appKey = secrets[@"App Key"];
+    NSString *appSecret = secrets[@"App Secret"];
     
     DBSession *dbSession = [[DBSession alloc] initWithAppKey:appKey appSecret:appSecret root:kDBRootAppFolder];
     [DBSession setSharedSession:dbSession];
