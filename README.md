@@ -1,9 +1,11 @@
 # MDViewer
 
+Markdown viewer for iPad
+
 ## How to run
 
-1. Rename `MDViewer/MDViewer-Info.plist.sample` to `MDViewer/MDViewer-Info.plist`.
-2. substitute `APPID` with your app's key on the plist.
+- Rename `MDViewer/MDViewer-Info.plist.sample` to `MDViewer/MDViewer-Info.plist`.
+- substitute `APP_KEY` with your app's key on the plist.
 
 ```
 <key>CFBundleURLTypes</key>
@@ -11,13 +13,13 @@
     <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-            <string>db-APPID</string>
+            <string>db-APP_KEY</string>
         </array>
     </dict>
 </array>
 ```
 
-3. Create `MDViewer/Secrets.plist` which includes your app's key and secret.
+- Create `MDViewer/Secrets.plist` which includes your app's key and secret.
 
 ```
 <dict>
