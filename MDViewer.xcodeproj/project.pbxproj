@@ -22,6 +22,7 @@
 		3DAD6773166CEA5E002BE205 /* MDTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAD6772166CEA5E002BE205 /* MDTreeViewController.m */; };
 		3DADBE5C166E4E720029DA73 /* MDViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DADBE5B166E4E720029DA73 /* MDViewerController.m */; };
 		3DF3551316D5165A00FB7B1D /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3551216D5165A00FB7B1D /* Secrets.plist */; };
+		3DF3551616D5286200FB7B1D /* MDViewer-Info.plist.sample in Resources */ = {isa = PBXBuildFile; fileRef = 3DF3551516D5286200FB7B1D /* MDViewer-Info.plist.sample */; };
 		D4849548ED334356A0A223A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B686F12BF9C41C3ADF2DF58 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		3DADBE5B166E4E720029DA73 /* MDViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDViewerController.m; sourceTree = "<group>"; };
 		3DBC0834166E365700D141D6 /* MDLoginDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDLoginDelegate.h; sourceTree = "<group>"; };
 		3DF3551216D5165A00FB7B1D /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		3DF3551516D5286200FB7B1D /* MDViewer-Info.plist.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "MDViewer-Info.plist.sample"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				3D6E4A16166CE5CC00BCAB90 /* InfoPlist.strings */,
 				3D6E4A19166CE5CC00BCAB90 /* main.m */,
 				3D6E4A15166CE5CC00BCAB90 /* MDViewer-Info.plist */,
+				3DF3551516D5286200FB7B1D /* MDViewer-Info.plist.sample */,
 				3D6E4A1B166CE5CC00BCAB90 /* MDViewer-Prefix.pch */,
 				3DF3551216D5165A00FB7B1D /* Secrets.plist */,
 			);
@@ -192,6 +195,7 @@
 				3D6E4A24166CE5CC00BCAB90 /* Default-568h@2x.png in Resources */,
 				3DAD676F166CE743002BE205 /* iPad.storyboard in Resources */,
 				3DF3551316D5165A00FB7B1D /* Secrets.plist in Resources */,
+				3DF3551616D5286200FB7B1D /* MDViewer-Info.plist.sample in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

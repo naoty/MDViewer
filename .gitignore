@@ -18,4 +18,5 @@ DerivedData
 .idea/
 
 Pods/
+MDViewer/MDViewer-Info.plist
 MDViewer/Secrets.plist
