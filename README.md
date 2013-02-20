@@ -5,6 +5,7 @@ Markdown viewer for iPad
 ## How to run
 
 - Rename `MDViewer/MDViewer-Info.plist.sample` to `MDViewer/MDViewer-Info.plist`.
+- Register a Dropbox application for your account and get app's key and secret.
 - substitute `APP_KEY` with your app's key on the plist.
 
 ```
