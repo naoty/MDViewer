@@ -9,17 +9,21 @@
 #import "MDAppDelegate.h"
 #import "MDTreeViewController.h"
 #import "MDViewerController.h"
+#import "TestFlight.h"
 
 @implementation MDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Dropbox iOS SDK
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Secrets" ofType:@"plist"];
     NSDictionary *secrets = [NSDictionary dictionaryWithContentsOfFile:path];
-    NSString *appKey = secrets[@"App Key"];
-    NSString *appSecret = secrets[@"App Secret"];
     
+    // TestFlight SDK
+    [TestFlight takeOff:secrets[@"TestFlight"][@"AppToken"]];
+    
+    // Dropbox iOS SDK
+    NSString *appKey = secrets[@"Dropbox"][@"AppKey"];
+    NSString *appSecret = secrets[@"Dropbox"][@"AppSecret"];
     DBSession *dbSession = [[DBSession alloc] initWithAppKey:appKey appSecret:appSecret root:kDBRootAppFolder];
     [DBSession setSharedSession:dbSession];
     
