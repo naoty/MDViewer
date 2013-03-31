@@ -1,15 +1,14 @@
-
 PODS:
-- Dropbox-iOS-SDK (1.3.3)
-- GHMarkdownParser (0.0.1)
-- MBProgressHUD (0.6)
-- TestFlightSDK (1.3.0.beta)
+  - Dropbox-iOS-SDK (1.3.3)
+  - GHMarkdownParser (0.0.1)
+  - MBProgressHUD (0.6)
+  - TestFlightSDK (1.3.0.beta)
 
 DEPENDENCIES:
-- Dropbox-iOS-SDK
-- GHMarkdownParser
-- MBProgressHUD
-- TestFlightSDK
+  - Dropbox-iOS-SDK
+  - GHMarkdownParser
+  - MBProgressHUD
+  - TestFlightSDK
 
 SPEC CHECKSUMS:
   Dropbox-iOS-SDK: 5ba15512b50769e175f1b612eba2b8d9c5d54b85
@@ -17,4 +16,4 @@ SPEC CHECKSUMS:
   MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
   TestFlightSDK: 76c4d5ef22054ef719ca9743580482764caf9144
 
-COCOAPODS: 0.16.4
+COCOAPODS: 0.17.1
