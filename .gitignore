@@ -20,3 +20,4 @@ DerivedData
 Pods/
 MDViewer/MDViewer-Info.plist
 MDViewer/Secrets.plist
+MDViewer.build
